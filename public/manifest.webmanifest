@@ -1,0 +1,13 @@
+{
+  "name": "Laptop Warehouse",
+  "short_name": "Laptop Warehouse",
+  "description": "Brand-new laptops, desktops and gadgets at warehouse prices. Nationwide delivery and 19 branches across the Philippines.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0e0e11",
+  "icons": [
+    { "src": "/logo.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "/favicon.png", "type": "image/png", "sizes": "any" }
+  ]
+}

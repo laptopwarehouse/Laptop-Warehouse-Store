@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --color-brand: #fc9b08;
+  --color-brand-dark: #e08400;
+  --color-ink: #0e0e11;
+  --color-ink-soft: #1a1a24;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-neutral-100 text-neutral-900 antialiased; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
