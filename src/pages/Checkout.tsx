@@ -5,9 +5,11 @@ import { formatPeso } from '../data/catalog';
 import { INSTALLMENT_PLANS, PAYMENT_METHODS } from '../data/content';
 import { BRANCH_LOCATIONS } from '../data/branches';
 import { useCart } from '../lib/cart';
+import { useStore } from '../lib/store';
 
 export default function CheckoutPage() {
   const { lines, subtotal, clear } = useCart();
+  const { branch } = useStore();
   const navigate = useNavigate();
   const [step, setStep] = useState<1 | 2>(1);
   const [orderRef, setOrderRef] = useState('');
@@ -18,7 +20,7 @@ export default function CheckoutPage() {
     fulfilment: 'delivery' as 'delivery' | 'pickup',
     address: '',
     city: '',
-    branch: '',
+    branch: branch.id,
     payment: 'Cash',
     months: 6,
   });

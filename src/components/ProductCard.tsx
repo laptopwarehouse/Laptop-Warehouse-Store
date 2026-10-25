@@ -2,11 +2,14 @@ import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { discountPercent, formatPeso, getCategory, type Product } from '../data/catalog';
 import { useCart } from '../lib/cart';
+import { useStore } from '../lib/store';
 import ProductArt from './ProductArt';
 
 export default function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
+  const { inBranch, branch } = useStore();
   const off = discountPercent(product);
+  const inStore = inBranch(product);
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white transition hover:-translate-y-0.5 hover:shadow-lg">
       <Link to={`/product/${product.id}`} className="relative block">
@@ -21,7 +24,10 @@ export default function ProductCard({ product }: { product: Product }) {
         <Link to={`/product/${product.id}`} className="line-clamp-2 text-sm font-semibold leading-snug text-neutral-800 hover:text-brand-dark">
           {product.name}
         </Link>
-        <div className="mt-auto flex items-end justify-between gap-2 pt-2">
+        <p className={`mt-1 text-[10px] font-bold uppercase tracking-wide ${inStore ? 'text-green-700' : 'text-neutral-400'}`}>
+          {inStore ? `In store · ${branch.shortName}` : 'Online only'}
+        </p>
+        <div className="mt-auto flex items-end justify-between gap-2 pt-1">
           <div>
             {product.originalPrice && <p className="text-xs text-neutral-400 line-through">{formatPeso(product.originalPrice)}</p>}
             <p className="text-base font-extrabold text-neutral-900">{formatPeso(product.price)}</p>

@@ -45,6 +45,10 @@ export interface Product {
   bestseller?: boolean;
   badge?: string;
   warranty: string;
+  // Where this unit is physically stocked. Assigned by the AVAILABILITY map below.
+  availability?: 'all' | 'metro' | 'online';
+  // Marketplace listings (a button shows only where listed).
+  marketplaces?: { shopee?: boolean; tiktok?: boolean; lazada?: boolean };
 }
 
 export const CATEGORIES: Category[] = [
@@ -611,3 +615,54 @@ export const discountPercent = (p: Product) =>
   p.originalPrice && p.originalPrice > p.price ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0;
 
 export const formatPeso = (n: number) => `₱${n.toLocaleString('en-PH', { maximumFractionDigits: 0 })}`;
+
+/**
+ * Per-product stock + marketplace presence (edit here when inventory changes).
+ * Availability: 'all' = every branch, 'metro' = Metro Manila branches only,
+ * 'online' = not held in stores (marketplace only).
+ * Defaults: 'metro' + Shopee; bestsellers get 'all' + Shopee & TikTok.
+ */
+const AVAILABILITY: Record<string, { a: Product['availability']; m: Product['marketplaces'] }> = {
+  'acer-nitro-v15-i5': { a: 'all', m: { shopee: true, tiktok: true, lazada: true } },
+  'hp-victus-15-r5': { a: 'all', m: { shopee: true, tiktok: true } },
+  'asus-tuf-a15-r7': { a: 'metro', m: { shopee: true, tiktok: true } },
+  'lenovo-loq-15-i5': { a: 'metro', m: { shopee: true, lazada: true } },
+  'msi-katana-15-i7': { a: 'metro', m: { shopee: true } },
+  'asus-rog-strix-g16': { a: 'metro', m: { shopee: true, lazada: true } },
+  'acer-aspire-lite-15': { a: 'all', m: { shopee: true, tiktok: true } },
+  'asus-vivobook-15-i3': { a: 'all', m: { shopee: true, tiktok: true } },
+  'lenovo-ideapad-slim3-i5': { a: 'metro', m: { shopee: true, lazada: true } },
+  'hp-15-fd-i5': { a: 'all', m: { shopee: true, tiktok: true } },
+  'chuwi-corebook-x': { a: 'online', m: { shopee: true, tiktok: true } },
+  'dell-vostro-3520': { a: 'metro', m: { shopee: true, lazada: true } },
+  'apple-macbook-air-m3-13': { a: 'metro', m: { lazada: true } },
+  'asus-zenbook-14-oled': { a: 'metro', m: { shopee: true, lazada: true } },
+  'hp-omnibook-x-14': { a: 'metro', m: { shopee: true, lazada: true } },
+  'lenovo-yoga-slim-7': { a: 'metro', m: { lazada: true } },
+  'apple-macbook-pro-14-m4': { a: 'metro', m: { lazada: true } },
+  'lenovo-ideacentre-aio-3': { a: 'metro', m: { shopee: true } },
+  'hp-aio-24': { a: 'metro', m: { shopee: true } },
+  'asus-rog-g22ch': { a: 'metro', m: { shopee: true, lazada: true } },
+  'lg-24mr400': { a: 'all', m: { shopee: true, tiktok: true } },
+  'msi-g255f': { a: 'metro', m: { shopee: true, tiktok: true } },
+  'epson-l3210': { a: 'all', m: { shopee: true, tiktok: true, lazada: true } },
+  'hp-smart-tank-580': { a: 'metro', m: { shopee: true, lazada: true } },
+  'logitech-g102': { a: 'all', m: { shopee: true, tiktok: true, lazada: true } },
+  'logitech-h390': { a: 'all', m: { shopee: true, tiktok: true } },
+  'fantech-maxfit61': { a: 'all', m: { shopee: true, tiktok: true } },
+  'fantech-wgp15': { a: 'metro', m: { shopee: true, tiktok: true } },
+  'lenovo-tab-m11': { a: 'metro', m: { shopee: true, lazada: true } },
+  'samsung-galaxy-tab-a9-plus': { a: 'all', m: { shopee: true, tiktok: true, lazada: true } },
+  'tecno-pova-6': { a: 'all', m: { shopee: true, tiktok: true } },
+  'realme-c67': { a: 'metro', m: { shopee: true, tiktok: true } },
+  'ms-365-family': { a: 'all', m: { shopee: true, lazada: true } },
+  'eset-home-security-essential': { a: 'all', m: { shopee: true, lazada: true } },
+  'ram-upgrade-16gb-ddr5': { a: 'all', m: { shopee: true } },
+  'ssd-upgrade-1tb': { a: 'all', m: { shopee: true } },
+};
+
+for (const p of PRODUCTS) {
+  const o = AVAILABILITY[p.id];
+  p.availability = o?.a ?? 'metro';
+  p.marketplaces = o?.m ?? { shopee: true };
+}

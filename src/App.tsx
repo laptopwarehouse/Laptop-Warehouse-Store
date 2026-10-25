@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import { CartProvider } from './lib/cart';
+import { StoreProvider } from './lib/store';
+import StorePicker from './components/StorePicker';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductPage from './pages/Product';
@@ -23,9 +25,10 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <CartProvider>
+    <StoreProvider>
+      <CartProvider>
       <ScrollToTop />
-      <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen flex-col">
         <Header />
         <main className="flex-1">
           <Routes>
@@ -56,6 +59,8 @@ export default function App() {
         <Footer />
       </div>
       <CartDrawer />
-    </CartProvider>
+      <StorePicker />
+      </CartProvider>
+    </StoreProvider>
   );
 }

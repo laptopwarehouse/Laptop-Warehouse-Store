@@ -4,6 +4,7 @@ import { ChevronRight, Minus, Plus, ShoppingCart, Store as StoreIcon, Truck } fr
 import { PRODUCTS, discountPercent, formatPeso, getCategory, getProduct } from '../data/catalog';
 import { INSTALLMENT_PLANS, PAYMENT_METHODS, STORE } from '../data/content';
 import { useCart } from '../lib/cart';
+import { useStore } from '../lib/store';
 import ProductArt from '../components/ProductArt';
 import ProductCard from '../components/ProductCard';
 
@@ -11,6 +12,7 @@ export default function ProductPage() {
   const { productId } = useParams();
   const product = getProduct(productId ?? '');
   const { add } = useCart();
+  const { branch, inBranch } = useStore();
   const [qty, setQty] = useState(1);
   const [months, setMonths] = useState(6);
 
@@ -60,6 +62,13 @@ export default function ProductPage() {
           </div>
           <p className={`mt-2 text-sm font-semibold ${product.stock <= 3 ? 'text-red-600' : 'text-green-700'}`}>
             {product.stock === 0 ? 'Out of stock' : product.stock <= 3 ? `Only ${product.stock} left in stock` : 'In stock'}
+          </p>
+          <p className="mt-1 text-xs text-neutral-500">
+            {inBranch(product)
+              ? `Available at ${branch.name} (${branch.address}).`
+              : (product.availability ?? 'metro') === 'online'
+                ? 'Online only — not held in stores.'
+                : `Not stocked at ${branch.shortName} — available at Metro Manila branches.`}
           </p>
 
           <ul className="mt-4 space-y-1.5">
@@ -126,25 +135,44 @@ export default function ProductPage() {
             </div>
           </div>
           <p className="mt-3 text-xs text-neutral-500">Warranty: {product.warranty}</p>
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
-            <span className="text-neutral-400">Also on:</span>
-            <a
-              href={STORE.shopeeSearch(product.name)}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md bg-[#ee4d2d] px-3 py-1.5 text-white hover:opacity-90"
-            >
-              <StoreIcon className="h-3.5 w-3.5" /> Find it on Shopee
-            </a>
-            <a
-              href={STORE.tiktok}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md bg-black px-3 py-1.5 text-white hover:opacity-90"
-            >
-              <StoreIcon className="h-3.5 w-3.5" /> TikTok Shop
-            </a>
-          </div>
+          {(() => {
+            const mp = product.marketplaces ?? {};
+            return mp.shopee || mp.tiktok || mp.lazada;
+          })() && (
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
+              <span className="text-neutral-400">Buy online:</span>
+              {(product.marketplaces?.shopee ?? false) && (
+                <a
+                  href={STORE.shopeeSearch(product.name)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-md bg-[#ee4d2d] px-3 py-1.5 text-white hover:opacity-90"
+                >
+                  <StoreIcon className="h-3.5 w-3.5" /> Shopee
+                </a>
+              )}
+              {(product.marketplaces?.tiktok ?? false) && (
+                <a
+                  href={STORE.tiktok}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-md bg-black px-3 py-1.5 text-white hover:opacity-90"
+                >
+                  <StoreIcon className="h-3.5 w-3.5" /> TikTok Shop
+                </a>
+              )}
+              {(product.marketplaces?.lazada ?? false) && (
+                <a
+                  href={STORE.lazada}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-md bg-[#0f146d] px-3 py-1.5 text-white hover:opacity-90"
+                >
+                  <StoreIcon className="h-3.5 w-3.5" /> Lazada
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
