@@ -26,6 +26,18 @@ const SELLING_POINTS = [
 export default function Home() {
   return (
     <div className="mx-auto max-w-7xl space-y-5 px-4 py-5">
+      {/* Top banner */}
+      <Link to="/shop" className="block overflow-hidden rounded-xl shadow-sm">
+        <img
+          src="https://lh3.googleusercontent.com/d/1LM4D2AX8q8n6a7IrdRUbUlIebOL6LwCW=w1600"
+          srcSet="https://lh3.googleusercontent.com/d/1LM4D2AX8q8n6a7IrdRUbUlIebOL6LwCW=w800 800w, https://lh3.googleusercontent.com/d/1LM4D2AX8q8n6a7IrdRUbUlIebOL6LwCW=w1600 1600w"
+          sizes="(max-width: 768px) 100vw, 1200px"
+          alt="Laptop Warehouse"
+          className="w-full"
+          loading="eager"
+        />
+      </Link>
+
       {/* Branch chooser — pick your store, we show what it stocks */}
       <section className="flex flex-col items-start justify-between gap-3 rounded-xl border border-brand/30 bg-white p-4 shadow-sm sm:flex-row sm:items-center">
         <div className="flex items-start gap-2.5">
