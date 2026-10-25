@@ -5,6 +5,7 @@ import { BRANDS, CATEGORIES, PRODUCTS, brandSlug, getCategory, type Product } fr
 import ProductCard from '../components/ProductCard';
 import { searchProducts } from '../lib/search';
 import { useStore } from '../lib/store';
+import BranchSelect from '../components/BranchSelect';
 import { MapPin } from 'lucide-react';
 
 const SORTS = [
@@ -50,7 +51,7 @@ export default function Shop({ mode }: { mode: 'all' | 'category' | 'brand' | 's
   const [cap, setCap] = useState(max);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
-  const { branch, openPicker } = useStore();
+  const { branch } = useStore();
 
   const shown = useMemo(
     () => sortProducts(base.filter((p) => p.price <= cap && (!brands.length || brands.includes(p.brand)) && (!cats.length || cats.includes(p.category))), sort),
@@ -125,14 +126,12 @@ export default function Shop({ mode }: { mode: 'all' | 'category' | 'brand' | 's
           {category && <p className="text-sm text-neutral-500">{category.tagline}</p>}
           <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-neutral-400">
             <MapPin className="h-3 w-3" />
-            Showing stock for{' '}
-            <button type="button" onClick={openPicker} className="font-bold text-brand-dark underline underline-offset-2 hover:text-brand">
-              {branch.shortName}
-            </button>
+            Stock for <span className="font-bold text-brand-dark">{branch.shortName}</span>
             <span className="mx-1">·</span> {shown.length} items
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <BranchSelect className="w-44" />
           <button
             type="button"
             onClick={() => setFiltersOpen((v) => !v)}

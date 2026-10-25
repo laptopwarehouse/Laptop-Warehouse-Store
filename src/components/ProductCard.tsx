@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShoppingCart } from 'lucide-react';
+import { BookmarkCheck } from 'lucide-react';
 import { discountPercent, formatPeso, getCategory, type Product } from '../data/catalog';
 import { useCart } from '../lib/cart';
 import { useStore } from '../lib/store';
@@ -32,15 +32,18 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.originalPrice && <p className="text-xs text-neutral-400 line-through">{formatPeso(product.originalPrice)}</p>}
             <p className="text-base font-extrabold text-neutral-900">{formatPeso(product.price)}</p>
           </div>
-          <button
-            type="button"
-            onClick={() => add(product)}
-            disabled={product.stock === 0}
-            aria-label={`Add ${product.name} to cart`}
-            className="rounded-md bg-brand p-2 text-white transition hover:bg-brand-dark disabled:opacity-40"
-          >
-            <ShoppingCart className="h-4 w-4" />
-          </button>
+          {inStore && (
+            <button
+              type="button"
+              onClick={() => add(product)}
+              disabled={product.stock === 0}
+              aria-label={`Reserve ${product.name} at ${branch.shortName}`}
+              title={`Reserve at ${branch.shortName}`}
+              className="rounded-md bg-brand p-2 text-white transition hover:bg-brand-dark disabled:opacity-40"
+            >
+              <BookmarkCheck className="h-4 w-4" />
+            </button>
+          )}
         </div>
       </div>
     </article>

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Minus, Plus, ShoppingCart, Trash2, X } from 'lucide-react';
+import { BookmarkCheck, Minus, Plus, Trash2, X } from 'lucide-react';
 import { formatPeso } from '../data/catalog';
 import { useCart } from '../lib/cart';
 import ProductArt from './ProductArt';
@@ -9,12 +9,12 @@ export default function CartDrawer() {
   const navigate = useNavigate();
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label="Cart">
+    <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label="Reservation list">
       <button type="button" aria-label="Close cart" className="absolute inset-0 bg-black/60" onClick={() => setOpen(false)} />
       <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-white shadow-xl">
         <div className="flex items-center justify-between bg-ink px-4 py-3">
           <p className="flex items-center gap-2 font-display font-bold text-white">
-            <ShoppingCart className="h-4 w-4 text-brand" /> Your Cart
+            <BookmarkCheck className="h-4 w-4 text-brand" /> Your Reservations
           </p>
           <button type="button" onClick={() => setOpen(false)} aria-label="Close" className="rounded-md p-1.5 text-white hover:bg-white/10">
             <X className="h-5 w-5" />
@@ -23,10 +23,10 @@ export default function CartDrawer() {
         <div className="flex-1 overflow-y-auto p-3">
           {lines.length === 0 && (
             <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
-              <ShoppingCart className="h-10 w-10 text-neutral-300" />
-              <p className="text-sm text-neutral-500">Your cart is empty.</p>
+              <BookmarkCheck className="h-10 w-10 text-neutral-300" />
+              <p className="text-sm text-neutral-500">Nothing reserved yet.</p>
               <button type="button" onClick={() => setOpen(false)} className="rounded-md bg-brand px-4 py-2 text-sm font-bold text-white hover:bg-brand-dark">
-                Continue shopping
+                Browse products
               </button>
             </div>
           )}
@@ -70,7 +70,7 @@ export default function CartDrawer() {
               }}
               className="w-full rounded-md bg-brand py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-brand-dark"
             >
-              Proceed to checkout
+              Reserve for pickup
             </button>
             <Link to="/cart" onClick={() => setOpen(false)} className="mt-2 block text-center text-xs font-semibold text-neutral-500 hover:text-brand-dark">
               View cart page

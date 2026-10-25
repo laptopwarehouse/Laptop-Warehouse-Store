@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ChevronRight, Minus, Plus, ShoppingCart, Store as StoreIcon, Truck } from 'lucide-react';
+import { BookmarkCheck, ChevronRight, Minus, Plus, Store as StoreIcon, Truck } from 'lucide-react';
 import { PRODUCTS, discountPercent, formatPeso, getCategory, getProduct } from '../data/catalog';
 import { INSTALLMENT_PLANS, PAYMENT_METHODS, STORE } from '../data/content';
 import { useCart } from '../lib/cart';
@@ -32,6 +32,7 @@ export default function ProductPage() {
   const off = discountPercent(product);
   const plan = INSTALLMENT_PLANS.find((p) => p.months === months) ?? INSTALLMENT_PLANS[1];
   const monthly = Math.ceil((product.price * (1 + plan.rate)) / plan.months / 5) * 5;
+  const inStore = inBranch(product);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-5">
@@ -96,12 +97,17 @@ export default function ProductPage() {
             <button
               type="button"
               onClick={() => add(product, qty)}
-              disabled={product.stock === 0}
+              disabled={product.stock === 0 || !inStore}
               className="flex flex-1 items-center justify-center gap-2 rounded-md bg-brand py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-brand-dark disabled:opacity-40"
             >
-              <ShoppingCart className="h-4 w-4" /> Add to cart
+              <BookmarkCheck className="h-4 w-4" /> Reserve at {branch.shortName}
             </button>
           </div>
+          <p className="mt-1.5 text-[11px] text-neutral-500">
+            {inStore
+              ? 'Reserve online, pay and claim at the store — no online payment needed.'
+              : 'Reservations are only for units stocked at your branch. This one is available through our online shops below.'}
+          </p>
 
           <div className="mt-5 rounded-lg border border-neutral-200 p-3">
             <p className="text-xs font-bold uppercase tracking-widest text-neutral-500">Installment from</p>
@@ -127,10 +133,10 @@ export default function ProductPage() {
               <p className="flex items-center gap-1.5 font-bold">
                 <Truck className="h-4 w-4 text-brand-dark" /> Delivery
               </p>
-              <p className="mt-1 text-xs text-neutral-500">Nationwide shipping. Free delivery within Metro Manila for orders over ₱10,000.</p>
+              <p className="mt-1 text-xs text-neutral-500">Want it delivered? Order through our Shopee, TikTok Shop, or Lazada stores below.</p>
             </div>
             <div className="rounded-lg bg-neutral-50 p-3">
-              <p className="font-bold">Payments</p>
+              <p className="font-bold">In-store payments</p>
               <p className="mt-1 text-xs text-neutral-500">{PAYMENT_METHODS.join(', ')}</p>
             </div>
           </div>

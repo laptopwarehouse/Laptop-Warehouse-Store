@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Minus, Plus, ShoppingCart, Trash2 } from 'lucide-react';
+import { BookmarkCheck, Minus, Plus, Trash2 } from 'lucide-react';
 import { formatPeso } from '../data/catalog';
 import { useCart } from '../lib/cart';
 import ProductArt from '../components/ProductArt';
@@ -8,13 +8,13 @@ export default function CartPage() {
   const { lines, subtotal, setQty, remove } = useCart();
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
-      <h1 className="font-display text-2xl font-bold">Your Cart</h1>
+      <h1 className="font-display text-2xl font-bold">Your Reservations</h1>
       {lines.length === 0 ? (
         <div className="mt-6 rounded-xl bg-white p-10 text-center shadow-sm">
-          <ShoppingCart className="mx-auto h-10 w-10 text-neutral-300" />
-          <p className="mt-3 text-neutral-500">Your cart is empty.</p>
+          <BookmarkCheck className="mx-auto h-10 w-10 text-neutral-300" />
+          <p className="mt-3 text-neutral-500">Nothing reserved yet.</p>
           <Link to="/shop" className="mt-4 inline-block rounded-md bg-brand px-4 py-2 text-sm font-bold text-white hover:bg-brand-dark">
-            Continue shopping
+            Browse products
           </Link>
         </div>
       ) : (
@@ -49,7 +49,7 @@ export default function CartPage() {
               <span>{formatPeso(subtotal)}</span>
             </div>
             <Link to="/checkout" className="mt-3 block rounded-md bg-brand py-3 text-center text-sm font-bold uppercase tracking-wide text-white hover:bg-brand-dark">
-              Proceed to checkout
+              Reserve for pickup
             </Link>
           </div>
         </div>

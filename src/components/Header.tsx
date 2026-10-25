@@ -4,7 +4,7 @@ import { ChevronDown, MapPin, Menu, Newspaper, Search, ShoppingCart, X } from 'l
 import { BRANDS, CATEGORIES, brandSlug, formatPeso } from '../data/catalog';
 import { STORE } from '../data/content';
 import { useCart } from '../lib/cart';
-import { useStore } from '../lib/store';
+import BranchSelect from './BranchSelect';
 import { searchProducts } from '../lib/search';
 import ProductArt from './ProductArt';
 
@@ -163,13 +163,12 @@ function MegaNav() {
 
 export default function Header() {
   const { count, setOpen } = useCart();
-  const { branch, openPicker } = useStore();
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 shadow-md">
       <div className="bg-brand text-white">
         <p className="mx-auto max-w-7xl truncate px-4 py-1.5 text-center text-[11px] font-bold uppercase tracking-widest">
-          Great laptops. Warehouse prices. — Nationwide delivery available
+          Great laptops. Warehouse prices. — Reserve online, pay at the store
         </p>
       </div>
       <div className="bg-ink">
@@ -192,18 +191,7 @@ export default function Header() {
           <div className="hidden flex-1 md:block">
             <SearchBox />
           </div>
-          <button
-            type="button"
-            onClick={openPicker}
-            className="hidden items-center gap-1.5 rounded-md px-2.5 py-2 text-left text-neutral-300 hover:bg-white/10 hover:text-white sm:flex"
-            aria-label={`Your branch: ${branch.name}. Tap to change.`}
-          >
-            <MapPin className="h-4 w-4 shrink-0 text-brand" />
-            <span className="flex flex-col leading-tight">
-              <span className="text-[9px] font-bold uppercase tracking-widest text-neutral-400">Your store</span>
-              <span className="max-w-[110px] truncate text-xs font-bold text-white">{branch.shortName}</span>
-            </span>
-          </button>
+          <BranchSelect dark className="hidden w-44 sm:flex" />
           <div className="ml-auto flex items-center gap-1">
             <a href={STORE.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="hidden rounded-md p-2 text-neutral-400 hover:bg-white/10 hover:text-white lg:block">
               <FacebookIcon />
@@ -218,10 +206,10 @@ export default function Header() {
               type="button"
               onClick={() => setOpen(true)}
               className="flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-white hover:bg-white/20"
-              aria-label={`Cart, ${count} items`}
+              aria-label={`Reservation list, ${count} items`}
             >
               <ShoppingCart className="h-4 w-4 text-brand" />
-              <span className="hidden text-xs font-bold uppercase tracking-wide md:inline">Cart</span>
+              <span className="hidden text-xs font-bold uppercase tracking-wide md:inline">Reserve</span>
               <span className="rounded bg-brand px-1.5 py-0.5 text-xs font-bold text-white">{count}</span>
             </button>
           </div>
@@ -245,19 +233,7 @@ export default function Header() {
               </button>
             </div>
             <nav className="flex flex-col p-3" aria-label="Mobile">
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileOpen(false);
-                  openPicker();
-                }}
-                className="mb-2 flex items-center gap-2 rounded-md bg-brand/10 px-3 py-2.5 text-left"
-              >
-                <MapPin className="h-4 w-4 text-brand-dark" />
-                <span className="flex-1 text-sm font-semibold">
-                  {branch.shortName} <span className="font-normal text-neutral-500">— change store</span>
-                </span>
-              </button>
+              <BranchSelect className="mb-2 w-full" />
               <Link to="/" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2.5 font-semibold hover:bg-neutral-100">
                 Home
               </Link>

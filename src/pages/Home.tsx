@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { CreditCard, ExternalLink, Laptop, Percent, ShieldCheck, Smartphone, Truck } from 'lucide-react';
+import { CreditCard, ExternalLink, Laptop, MapPin, Percent, ShieldCheck, Smartphone, Truck } from 'lucide-react';
 import { CATEGORIES, PRODUCTS } from '../data/catalog';
 import { ARTICLES, STORE } from '../data/content';
 import { BRANCH_LOCATIONS } from '../data/branches';
 import CategorySection from '../components/CategorySection';
+import BranchSelect from '../components/BranchSelect';
 
 const HOME_SECTIONS: { title: string; category: string }[] = [
   { title: 'Gaming Laptops', category: 'gaming-laptops' },
@@ -25,6 +26,20 @@ const SELLING_POINTS = [
 export default function Home() {
   return (
     <div className="mx-auto max-w-7xl space-y-5 px-4 py-5">
+      {/* Branch chooser — pick your store, we show what it stocks */}
+      <section className="flex flex-col items-start justify-between gap-3 rounded-xl border border-brand/30 bg-white p-4 shadow-sm sm:flex-row sm:items-center">
+        <div className="flex items-start gap-2.5">
+          <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-dark" />
+          <div>
+            <p className="font-display text-sm font-bold">Shop your nearest Laptop Warehouse</p>
+            <p className="text-xs text-neutral-500">
+              Pick a branch to see what it stocks. Reserve online and pay at the store — or get it delivered via our Shopee, TikTok Shop, and Lazada stores.
+            </p>
+          </div>
+        </div>
+        <BranchSelect label="Choose your branch" className="w-full sm:w-72" />
+      </section>
+
       {/* Promo banner grid */}
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
         <Link

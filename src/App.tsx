@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import { CartProvider } from './lib/cart';
 import { StoreProvider } from './lib/store';
-import StorePicker from './components/StorePicker';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductPage from './pages/Product';
@@ -59,7 +58,6 @@ export default function App() {
         <Footer />
       </div>
       <CartDrawer />
-      <StorePicker />
       </CartProvider>
     </StoreProvider>
   );
