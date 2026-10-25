@@ -130,25 +130,27 @@ export default function Shop({ mode }: { mode: 'all' | 'category' | 'brand' | 's
             <span className="mx-1">·</span> {shown.length} items
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <BranchSelect className="w-44" />
-          <button
-            type="button"
-            onClick={() => setFiltersOpen((v) => !v)}
-            className="flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-bold uppercase tracking-wide lg:hidden"
-          >
-            <SlidersHorizontal className="h-3.5 w-3.5" /> Filters
-          </button>
-          <label className="flex items-center gap-2 text-xs font-semibold text-neutral-500">
-            Sort
-            <select value={sort} onChange={(e) => setSort(e.target.value)} className="rounded-md border border-neutral-300 bg-white px-2 py-2 text-sm">
-              {SORTS.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.label}
-                </option>
-              ))}
-            </select>
-          </label>
+        <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
+          <BranchSelect className="w-full min-w-0 sm:w-44" />
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setFiltersOpen((v) => !v)}
+              className="flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-bold uppercase tracking-wide lg:hidden"
+            >
+              <SlidersHorizontal className="h-3.5 w-3.5" /> Filters
+            </button>
+            <label className="flex items-center gap-2 text-xs font-semibold text-neutral-500">
+              Sort
+              <select value={sort} onChange={(e) => setSort(e.target.value)} className="rounded-md border border-neutral-300 bg-white px-2 py-2 text-sm">
+                {SORTS.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
         </div>
       </div>
       <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
