@@ -168,7 +168,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 shadow-md">
       <div className="bg-brand text-white">
         <p className="mx-auto max-w-7xl truncate px-4 py-1.5 text-center text-[11px] font-bold uppercase tracking-widest">
-          Great laptops. Warehouse prices. — Reserve online, pay at the store
+          Brand-new laptops at warehouse prices — 19 branches nationwide
         </p>
       </div>
       <div className="bg-ink">
