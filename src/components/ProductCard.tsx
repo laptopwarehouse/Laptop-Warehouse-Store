@@ -31,7 +31,7 @@ export default function ProductCard({ product }: { product: Product }) {
             onClick={() => add(product)}
             disabled={product.stock === 0}
             aria-label={`Add ${product.name} to cart`}
-            className="rounded-md bg-brand p-2 text-ink transition hover:bg-brand-dark disabled:opacity-40"
+            className="rounded-md bg-brand p-2 text-white transition hover:bg-brand-dark disabled:opacity-40"
           >
             <ShoppingCart className="h-4 w-4" />
           </button>

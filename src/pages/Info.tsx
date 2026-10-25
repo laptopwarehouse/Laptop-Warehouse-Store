@@ -55,7 +55,7 @@ export function InstallmentsPage() {
         Indicative figures only. Final terms, rates and approval are decided by the installment provider at the branch. Bring your valid ID to any of our{' '}
         {BRANCH_LOCATIONS.length} branches or call {STORE.phone}.
       </p>
-      <Link to="/branches" className="mt-5 inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-bold text-ink hover:bg-brand-dark">
+      <Link to="/branches" className="mt-5 inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-dark">
         <Phone className="h-4 w-4" /> Find a branch
       </Link>
     </div>

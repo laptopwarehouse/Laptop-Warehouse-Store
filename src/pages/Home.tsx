@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CreditCard, Laptop, Percent, ShieldCheck, Smartphone, Truck } from 'lucide-react';
+import { CreditCard, ExternalLink, Laptop, Percent, ShieldCheck, Smartphone, Truck } from 'lucide-react';
 import { CATEGORIES, PRODUCTS } from '../data/catalog';
 import { ARTICLES, STORE } from '../data/content';
 import { BRANCH_LOCATIONS } from '../data/branches';
@@ -31,7 +31,7 @@ export default function Home() {
           to="/shop"
           className="group relative overflow-hidden rounded-xl bg-ink p-5 text-white md:col-span-2 lg:row-span-2 lg:min-h-[320px]"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(252,155,8,0.35),transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(238,77,45,0.4),transparent_60%)]" />
           <div className="relative flex h-full flex-col justify-between">
             <div>
               <p className="font-display text-2xl font-bold leading-tight md:text-3xl">
@@ -44,7 +44,7 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-6">
-              <span className="inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-bold uppercase tracking-wide text-ink transition group-hover:bg-brand-dark">
+              <span className="inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-bold uppercase tracking-wide text-white transition group-hover:bg-brand-dark">
                 <Laptop className="h-4 w-4" /> Shop now
               </span>
               <div className="mt-4 flex flex-wrap gap-4 text-xs font-semibold text-neutral-200">
@@ -76,11 +76,29 @@ export default function Home() {
           <span className="mt-3 inline-block rounded-md bg-ink px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">Shop upgrades</span>
         </Link>
         <Link to="/category/gaming-laptops" className="rounded-xl bg-gradient-to-br from-brand to-brand-dark p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <Laptop className="h-6 w-6 text-ink" />
-          <p className="mt-2 font-display font-bold text-ink">RTX gaming deals</p>
-          <p className="mt-1 text-sm font-medium text-ink/70">The best RTX 40-series prices in the country.</p>
+          <Laptop className="h-6 w-6 text-white" />
+          <p className="mt-2 font-display font-bold text-white">RTX gaming deals</p>
+          <p className="mt-1 text-sm font-medium text-white/80">The best RTX 40-series prices in the country.</p>
           <span className="mt-3 inline-block rounded-md bg-ink px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-brand">Level up</span>
         </Link>
+      </div>
+
+      {/* Marketplace strip */}
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#ee4d2d]/30 bg-[#ee4d2d]/5 px-4 py-3">
+        <p className="text-sm font-semibold text-neutral-700">
+          Prefer marketplace checkout? We&apos;re on Shopee and TikTok Shop too — same warehouse prices, buyer protection included.
+        </p>
+        <div className="flex gap-2">
+          <a href={STORE.shopee} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md bg-[#ee4d2d] px-3 py-2 text-xs font-bold text-white hover:opacity-90">
+            Shopee Store <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+          <a href={STORE.tiktok} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md bg-black px-3 py-2 text-xs font-bold text-white hover:opacity-90">
+            TikTok Shop <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+          <a href={STORE.lazada} target="_blank" rel="noreferrer" className="hidden items-center gap-1.5 rounded-md bg-[#0f146d] px-3 py-2 text-xs font-bold text-white hover:opacity-90 sm:inline-flex">
+            Lazada <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        </div>
       </div>
 
       {/* Category chips */}
@@ -107,7 +125,7 @@ export default function Home() {
             <span className="mr-2 inline-block h-4 w-1.5 rounded-sm bg-brand align-middle" />
             {STORE.name} Blog
           </h2>
-          <Link to="/blog" className="rounded-md bg-brand px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-ink hover:bg-brand-dark">
+          <Link to="/blog" className="rounded-md bg-brand px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white hover:bg-brand-dark">
             See all
           </Link>
         </div>

@@ -3,10 +3,10 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", "Inter", sans-serif;
-  --color-brand: #fc9b08;
-  --color-brand-dark: #e08400;
-  --color-ink: #0e0e11;
-  --color-ink-soft: #1a1a24;
+  --color-brand: #ee4d2d;
+  --color-brand-dark: #d73211;
+  --color-ink: #1f1f1f;
+  --color-ink-soft: #2a2a2a;
 }
 
 html { scroll-behavior: smooth; }

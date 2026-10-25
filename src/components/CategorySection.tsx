@@ -22,7 +22,7 @@ export default function CategorySection({ title, to, products }: { title: string
           <button type="button" onClick={() => scroll(1)} aria-label="Scroll right" className="hidden rounded-md bg-white/10 p-1.5 text-white hover:bg-white/20 sm:block">
             <ChevronRight className="h-4 w-4" />
           </button>
-          <Link to={to} className="rounded-md bg-brand px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-ink hover:bg-brand-dark">
+          <Link to={to} className="rounded-md bg-brand px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white hover:bg-brand-dark">
             See all
           </Link>
         </div>

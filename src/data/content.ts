@@ -3,9 +3,12 @@ export const STORE = {
   tagline: 'Great laptops. Warehouse prices.',
   phone: '0927 700 3432',
   email: 'hello@laptopwarehouse.ph',
-  facebook: 'https://www.facebook.com/',
-  tiktok: 'https://www.tiktok.com/',
+  facebook: 'https://www.facebook.com/laptopwarehouseph',
+  tiktok: 'https://www.tiktok.com/@laptopwarehousemain',
   instagram: 'https://www.instagram.com/',
+  shopee: 'https://shopee.ph/laptopwarehousesan',
+  lazada: 'https://www.lazada.com.ph/tag/laptop-warehouse-official/',
+  shopeeSearch: (q: string) => `https://shopee.ph/search?keyword=${encodeURIComponent(q)}`,
 };
 
 export const PAYMENT_METHODS = ['Cash', 'GCash', 'Maya', 'Visa / Mastercard', 'Bank transfer', 'BillEase', 'Home Credit'];

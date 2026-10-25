@@ -25,7 +25,7 @@ export default function CartDrawer() {
             <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
               <ShoppingCart className="h-10 w-10 text-neutral-300" />
               <p className="text-sm text-neutral-500">Your cart is empty.</p>
-              <button type="button" onClick={() => setOpen(false)} className="rounded-md bg-brand px-4 py-2 text-sm font-bold text-ink hover:bg-brand-dark">
+              <button type="button" onClick={() => setOpen(false)} className="rounded-md bg-brand px-4 py-2 text-sm font-bold text-white hover:bg-brand-dark">
                 Continue shopping
               </button>
             </div>
@@ -68,7 +68,7 @@ export default function CartDrawer() {
                 setOpen(false);
                 navigate('/checkout');
               }}
-              className="w-full rounded-md bg-brand py-3 text-sm font-bold uppercase tracking-wide text-ink hover:bg-brand-dark"
+              className="w-full rounded-md bg-brand py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-brand-dark"
             >
               Proceed to checkout
             </button>

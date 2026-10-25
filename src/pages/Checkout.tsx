@@ -56,7 +56,7 @@ export default function CheckoutPage() {
             {form.payment} application: prepare 1 valid ID and your active mobile number. Estimated {formatPeso(monthly)}/mo for {plan.months} months.
           </p>
         )}
-        <Link to="/shop" className="mt-6 inline-block rounded-md bg-brand px-5 py-2.5 text-sm font-bold text-ink hover:bg-brand-dark">
+        <Link to="/shop" className="mt-6 inline-block rounded-md bg-brand px-5 py-2.5 text-sm font-bold text-white hover:bg-brand-dark">
           Continue shopping
         </Link>
       </div>
@@ -67,7 +67,7 @@ export default function CheckoutPage() {
     return (
       <div className="mx-auto max-w-xl px-4 py-16 text-center">
         <p className="font-display text-xl font-bold">Nothing to check out</p>
-        <Link to="/shop" className="mt-4 inline-block rounded-md bg-brand px-4 py-2 text-sm font-bold text-ink">
+        <Link to="/shop" className="mt-4 inline-block rounded-md bg-brand px-4 py-2 text-sm font-bold text-white">
           Back to shop
         </Link>
       </div>
@@ -192,7 +192,7 @@ export default function CheckoutPage() {
             )}
           </section>
 
-          <button type="submit" disabled={!valid} className="w-full rounded-md bg-brand py-3.5 text-sm font-bold uppercase tracking-wide text-ink hover:bg-brand-dark disabled:opacity-40">
+          <button type="submit" disabled={!valid} className="w-full rounded-md bg-brand py-3.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-brand-dark disabled:opacity-40">
             Place order — {formatPeso(grand)}
           </button>
           {!valid && <p className="text-center text-xs text-neutral-500">Fill in your name, a valid mobile number, and {form.fulfilment === 'delivery' ? 'your address' : 'a pickup branch'}.</p>}

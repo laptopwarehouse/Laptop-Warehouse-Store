@@ -30,7 +30,7 @@ export function BlogArticle() {
     return (
       <div className="mx-auto max-w-2xl px-4 py-20 text-center">
         <p className="font-display text-xl font-bold">Article not found</p>
-        <Link to="/blog" className="mt-3 inline-block rounded-md bg-brand px-4 py-2 text-sm font-bold text-ink">
+        <Link to="/blog" className="mt-3 inline-block rounded-md bg-brand px-4 py-2 text-sm font-bold text-white">
           Back to blog
         </Link>
       </div>

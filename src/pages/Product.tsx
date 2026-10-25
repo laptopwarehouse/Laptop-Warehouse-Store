@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ChevronRight, Minus, Plus, ShoppingCart, Truck } from 'lucide-react';
+import { ChevronRight, Minus, Plus, ShoppingCart, Store as StoreIcon, Truck } from 'lucide-react';
 import { PRODUCTS, discountPercent, formatPeso, getCategory, getProduct } from '../data/catalog';
-import { INSTALLMENT_PLANS, PAYMENT_METHODS } from '../data/content';
+import { INSTALLMENT_PLANS, PAYMENT_METHODS, STORE } from '../data/content';
 import { useCart } from '../lib/cart';
 import ProductArt from '../components/ProductArt';
 import ProductCard from '../components/ProductCard';
@@ -20,7 +20,7 @@ export default function ProductPage() {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center">
         <p className="font-display text-xl font-bold">Product not found</p>
-        <Link to="/shop" className="mt-3 inline-block rounded-md bg-brand px-4 py-2 text-sm font-bold text-ink">
+        <Link to="/shop" className="mt-3 inline-block rounded-md bg-brand px-4 py-2 text-sm font-bold text-white">
           Back to shop
         </Link>
       </div>
@@ -88,7 +88,7 @@ export default function ProductPage() {
               type="button"
               onClick={() => add(product, qty)}
               disabled={product.stock === 0}
-              className="flex flex-1 items-center justify-center gap-2 rounded-md bg-brand py-3 text-sm font-bold uppercase tracking-wide text-ink hover:bg-brand-dark disabled:opacity-40"
+              className="flex flex-1 items-center justify-center gap-2 rounded-md bg-brand py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-brand-dark disabled:opacity-40"
             >
               <ShoppingCart className="h-4 w-4" /> Add to cart
             </button>
@@ -126,6 +126,25 @@ export default function ProductPage() {
             </div>
           </div>
           <p className="mt-3 text-xs text-neutral-500">Warranty: {product.warranty}</p>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-semibold">
+            <span className="text-neutral-400">Also on:</span>
+            <a
+              href={STORE.shopeeSearch(product.name)}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-md bg-[#ee4d2d] px-3 py-1.5 text-white hover:opacity-90"
+            >
+              <StoreIcon className="h-3.5 w-3.5" /> Find it on Shopee
+            </a>
+            <a
+              href={STORE.tiktok}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-md bg-black px-3 py-1.5 text-white hover:opacity-90"
+            >
+              <StoreIcon className="h-3.5 w-3.5" /> TikTok Shop
+            </a>
+          </div>
         </div>
       </div>
 

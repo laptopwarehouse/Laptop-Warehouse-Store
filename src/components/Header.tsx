@@ -70,7 +70,7 @@ function SearchBox({ mobile = false }: { mobile?: boolean }) {
           aria-label="Search products"
           className="w-full px-3 py-2.5 text-sm text-neutral-800 outline-none"
         />
-        <button type="submit" aria-label="Search" className="bg-brand px-4 text-ink hover:bg-brand-dark">
+        <button type="submit" aria-label="Search" className="bg-brand px-4 text-white hover:bg-brand-dark">
           <Search className="h-4 w-4" />
         </button>
       </form>
@@ -165,7 +165,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 shadow-md">
-      <div className="bg-brand text-ink">
+      <div className="bg-brand text-white">
         <p className="mx-auto max-w-7xl truncate px-4 py-1.5 text-center text-[11px] font-bold uppercase tracking-widest">
           Great laptops. Warehouse prices. — Nationwide delivery available
         </p>
@@ -208,7 +208,7 @@ export default function Header() {
             >
               <ShoppingCart className="h-4 w-4 text-brand" />
               <span className="hidden text-xs font-bold uppercase tracking-wide md:inline">Cart</span>
-              <span className="rounded bg-brand px-1.5 py-0.5 text-xs font-bold text-ink">{count}</span>
+              <span className="rounded bg-brand px-1.5 py-0.5 text-xs font-bold text-white">{count}</span>
             </button>
           </div>
         </div>

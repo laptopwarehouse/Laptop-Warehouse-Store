@@ -104,6 +104,24 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
+          <h3 className="mt-6 font-display text-sm font-bold uppercase tracking-wider text-white">Shop with us online</h3>
+          <ul className="mt-3 space-y-2 text-sm">
+            <li>
+              <a href={STORE.shopee} target="_blank" rel="noreferrer" className="hover:text-brand">
+                Shopee — Laptop Warehouse Sandigan
+              </a>
+            </li>
+            <li>
+              <a href={STORE.tiktok} target="_blank" rel="noreferrer" className="hover:text-brand">
+                TikTok Shop — @laptopwarehousemain
+              </a>
+            </li>
+            <li>
+              <a href={STORE.lazada} target="_blank" rel="noreferrer" className="hover:text-brand">
+                Lazada — Laptop Warehouse Official
+              </a>
+            </li>
+          </ul>
           <h3 className="mt-6 font-display text-sm font-bold uppercase tracking-wider text-white">We accept</h3>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {PAYMENT_METHODS.map((m) => (

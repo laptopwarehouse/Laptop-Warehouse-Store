@@ -13,7 +13,7 @@ export default function CartPage() {
         <div className="mt-6 rounded-xl bg-white p-10 text-center shadow-sm">
           <ShoppingCart className="mx-auto h-10 w-10 text-neutral-300" />
           <p className="mt-3 text-neutral-500">Your cart is empty.</p>
-          <Link to="/shop" className="mt-4 inline-block rounded-md bg-brand px-4 py-2 text-sm font-bold text-ink hover:bg-brand-dark">
+          <Link to="/shop" className="mt-4 inline-block rounded-md bg-brand px-4 py-2 text-sm font-bold text-white hover:bg-brand-dark">
             Continue shopping
           </Link>
         </div>
@@ -48,7 +48,7 @@ export default function CartPage() {
               <span>Subtotal</span>
               <span>{formatPeso(subtotal)}</span>
             </div>
-            <Link to="/checkout" className="mt-3 block rounded-md bg-brand py-3 text-center text-sm font-bold uppercase tracking-wide text-ink hover:bg-brand-dark">
+            <Link to="/checkout" className="mt-3 block rounded-md bg-brand py-3 text-center text-sm font-bold uppercase tracking-wide text-white hover:bg-brand-dark">
               Proceed to checkout
             </Link>
           </div>
