@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BookmarkCheck, ChevronRight, Minus, Plus, Store as StoreIcon, Truck } from 'lucide-react';
 import { PRODUCTS, discountPercent, formatPeso, getCategory, getProduct } from '../data/catalog';
-import { INSTALLMENT_PLANS, PAYMENT_METHODS, STORE } from '../data/content';
+import { PAYMENT_METHODS, STORE } from '../data/content';
 import { useCart } from '../lib/cart';
 import { useStore } from '../lib/store';
 import ProductArt from '../components/ProductArt';
@@ -14,7 +14,6 @@ export default function ProductPage() {
   const { add } = useCart();
   const { branch, inBranch } = useStore();
   const [qty, setQty] = useState(1);
-  const [months, setMonths] = useState(6);
 
   const related = useMemo(() => (product ? PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4) : []), [product]);
 
@@ -30,8 +29,6 @@ export default function ProductPage() {
   }
 
   const off = discountPercent(product);
-  const plan = INSTALLMENT_PLANS.find((p) => p.months === months) ?? INSTALLMENT_PLANS[1];
-  const monthly = Math.ceil((product.price * (1 + plan.rate)) / plan.months / 5) * 5;
   const inStore = inBranch(product);
 
   return (
@@ -64,6 +61,11 @@ export default function ProductPage() {
           <p className={`mt-2 text-sm font-semibold ${product.stock <= 3 ? 'text-red-600' : 'text-green-700'}`}>
             {product.stock === 0 ? 'Out of stock' : product.stock <= 3 ? `Only ${product.stock} left in stock` : 'In stock'}
           </p>
+          {product.condition === 'pre-owned' && (
+            <p className="mt-1.5 inline-block rounded bg-amber-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-amber-800">
+              Pre-owned — tested before release
+            </p>
+          )}
           <p className="mt-1 text-xs text-neutral-500">
             {inBranch(product)
               ? `Available at ${branch.name} (${branch.address}).`
@@ -109,24 +111,6 @@ export default function ProductPage() {
               : 'Reservations are only for units stocked at your branch. This one is available through our online shops below.'}
           </p>
 
-          <div className="mt-5 rounded-lg border border-neutral-200 p-3">
-            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500">Installment from</p>
-            <div className="mt-2 flex flex-wrap items-center gap-2">
-              {INSTALLMENT_PLANS.map((p) => (
-                <button
-                  key={p.months}
-                  type="button"
-                  onClick={() => setMonths(p.months)}
-                  className={`rounded-md border px-2.5 py-1.5 text-xs font-semibold ${months === p.months ? 'border-brand bg-brand/10 text-brand-dark' : 'border-neutral-300 text-neutral-600'}`}
-                >
-                  {p.label}
-                </button>
-              ))}
-            </div>
-            <p className="mt-2 text-lg font-extrabold">
-              ≈ {formatPeso(monthly)} <span className="text-xs font-medium text-neutral-500">/mo for {plan.months} months via BillEase or Home Credit</span>
-            </p>
-          </div>
 
           <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
             <div className="rounded-lg bg-neutral-50 p-3">

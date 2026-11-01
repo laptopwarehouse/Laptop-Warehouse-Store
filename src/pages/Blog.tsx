@@ -6,7 +6,7 @@ export function BlogList() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
       <h1 className="font-display text-2xl font-bold">Blog</h1>
-      <p className="mt-1 text-sm text-neutral-500">Buying guides, installment tips and laptop care.</p>
+      <p className="mt-1 text-sm text-neutral-500">Buying guides, bundle deals and laptop care.</p>
       <div className="mt-6 space-y-4">
         {ARTICLES.map((a) => (
           <Link key={a.slug} to={`/blog/${a.slug}`} className="block rounded-xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">

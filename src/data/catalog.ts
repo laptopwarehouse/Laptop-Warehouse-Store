@@ -4,9 +4,7 @@ export type CategoryId =
   | 'premium-laptops'
   | 'desktops'
   | 'monitors-printers'
-  | 'accessories'
-  | 'phones-tablets'
-  | 'software-upgrades';
+  | 'accessories';
 
 export type ArtKind =
   | 'laptop'
@@ -14,14 +12,10 @@ export type ArtKind =
   | 'aio'
   | 'monitor'
   | 'printer'
-  | 'phone'
-  | 'tablet'
   | 'headset'
   | 'mouse'
   | 'keyboard'
-  | 'controller'
-  | 'software'
-  | 'ram';
+  | 'controller';
 
 export interface Category {
   id: CategoryId;
@@ -44,6 +38,7 @@ export interface Product {
   stock: number;
   bestseller?: boolean;
   badge?: string;
+  condition?: 'new' | 'pre-owned';
   warranty: string;
   // Where this unit is physically stocked. Assigned by the AVAILABILITY map below.
   availability?: 'all' | 'metro' | 'online';
@@ -56,10 +51,8 @@ export const CATEGORIES: Category[] = [
   { id: 'everyday-laptops', name: 'Everyday Laptops', tagline: 'Reliable picks for school, WFH and business' },
   { id: 'premium-laptops', name: 'Premium Laptops', tagline: 'Thin, light, and built to impress' },
   { id: 'desktops', name: 'Desktops & All-in-One', tagline: 'Workstations and AIOs for home and office' },
-  { id: 'monitors-printers', name: 'Monitors & Printers', tagline: 'Bigger screens and ink-saving printers' },
+  { id: 'monitors-printers', name: 'Printers & Monitors', tagline: 'Home and office printers, plus monitors for your setup' },
   { id: 'accessories', name: 'Accessories', tagline: 'Headsets, mice, keyboards and controllers' },
-  { id: 'phones-tablets', name: 'Phones & Tablets', tagline: 'Pocket and couch-friendly devices' },
-  { id: 'software-upgrades', name: 'Software & Upgrades', tagline: 'Genuine licenses, RAM and SSD upgrades' },
 ];
 
 const LAPTOP_WARRANTY = '1 year parts & service warranty';
@@ -485,121 +478,99 @@ export const PRODUCTS: Product[] = [
     warranty: '1 year warranty',
   },
 
-  // Phones & tablets
-  {
-    id: 'lenovo-tab-m11',
-    name: 'Lenovo Tab M11 with Pen',
-    brand: 'Lenovo',
-    category: 'phones-tablets',
-    art: 'tablet',
-    color: '#64748b',
-    price: 12995,
-    originalPrice: 14995,
-    highlights: ['MediaTek Helio G88', '8GB RAM / 128GB', '11" 90Hz display', 'Lenovo Tab Pen included'],
-    specs: { Processor: 'MediaTek Helio G88', Memory: '8GB RAM', Storage: '128GB (microSD up to 1TB)', Display: '11" WUXGA 90Hz', Battery: '7,040 mAh' },
-    stock: 9,
-    warranty: '1 year warranty',
-  },
-  {
-    id: 'samsung-galaxy-tab-a9-plus',
-    name: 'Samsung Galaxy Tab A9+ Wi-Fi',
-    brand: 'Samsung',
-    category: 'phones-tablets',
-    art: 'tablet',
-    color: '#1e293b',
-    price: 11990,
-    originalPrice: 13990,
-    highlights: ['Snapdragon 695', '8GB RAM / 128GB', '11" 90Hz display', 'Quad speakers'],
-    specs: { Processor: 'Snapdragon 695', Memory: '8GB RAM', Storage: '128GB', Display: '11" 90Hz', Battery: '7,040 mAh' },
-    stock: 11,
-    bestseller: true,
-    warranty: '1 year Samsung warranty',
-  },
-  {
-    id: 'tecno-pova-6',
-    name: 'Tecno POVA 6 5G',
-    brand: 'Tecno',
-    category: 'phones-tablets',
-    art: 'phone',
-    color: '#16a34a',
-    price: 10999,
-    originalPrice: 12999,
-    highlights: ['Dimensity 6080 5G', '8GB RAM / 256GB', '6.78" 120Hz', '6,000 mAh battery'],
-    specs: { Processor: 'MediaTek Dimensity 6080', Memory: '8GB RAM + 8GB extended', Storage: '256GB', Display: '6.78" FHD+ 120Hz', Battery: '6,000 mAh, 70W fast charge' },
-    stock: 15,
-    warranty: '1 year warranty',
-  },
-  {
-    id: 'realme-c67',
-    name: 'realme C67',
-    brand: 'realme',
-    category: 'phones-tablets',
-    art: 'phone',
-    color: '#facc15',
-    price: 8499,
-    originalPrice: 9999,
-    highlights: ['Snapdragon 685', '8GB RAM / 256GB', '108MP camera', '5,000 mAh battery'],
-    specs: { Processor: 'Snapdragon 685', Memory: '8GB RAM', Storage: '256GB', Camera: '108MP main', Battery: '5,000 mAh, 33W SUPERVOOC' },
-    stock: 13,
-    warranty: '1 year warranty',
-  },
 
-  // Software & upgrades
+  // Pre-owned units
   {
-    id: 'ms-365-family',
-    name: 'Microsoft 365 Family (1 year, 6 users)',
-    brand: 'Microsoft',
-    category: 'software-upgrades',
-    art: 'software',
-    color: '#ea580c',
-    price: 4295,
-    originalPrice: 4995,
-    highlights: ['Word, Excel, PowerPoint, Outlook', '1TB OneDrive per user', 'Up to 6 people'],
-    specs: { License: '12-month subscription, digital code', Users: 'Up to 6', Storage: '1TB OneDrive each', Platforms: 'Windows, macOS, iOS, Android' },
-    stock: 99,
-    bestseller: true,
-    warranty: 'Genuine license guarantee',
+    id: 'lenovo-thinkpad-x390-po',
+    name: 'Lenovo ThinkPad X390 (Pre-owned)',
+    brand: 'Lenovo',
+    category: 'everyday-laptops',
+    art: 'laptop',
+    color: '#374151',
+    price: 14999,
+    originalPrice: 16999,
+    highlights: ['Core i5 8th Gen', '16GB RAM / 256GB SSD', '13.3" FHD', 'Tested before release'],
+    specs: { Processor: 'Intel Core i5-8265U', Memory: '16GB DDR4', Storage: '256GB NVMe SSD', Display: '13.3" FHD IPS', Condition: 'Pre-owned, tested in-store' },
+    stock: 3,
+    condition: 'pre-owned',
+    badge: 'Pre-owned',
+    warranty: '3 months store warranty',
   },
   {
-    id: 'eset-home-security-essential',
-    name: 'ESET HOME Security Essential (1 year)',
-    brand: 'ESET',
-    category: 'software-upgrades',
-    art: 'software',
-    color: '#0d9488',
-    price: 1095,
-    originalPrice: 1295,
-    highlights: ['Antivirus & anti-phishing', 'Banking & payment protection', '1 device'],
-    specs: { License: '12-month, digital code', Devices: '1', Platforms: 'Windows, macOS, Android' },
-    stock: 99,
-    warranty: 'Genuine license guarantee',
+    id: 'dell-latitude-3410-po',
+    name: 'Dell Latitude 3410 (Pre-owned)',
+    brand: 'Dell',
+    category: 'everyday-laptops',
+    art: 'laptop',
+    color: '#475569',
+    price: 12999,
+    highlights: ['Core i5 10th Gen', '8GB RAM / 256GB SSD', '14" FHD', 'Tested before release'],
+    specs: { Processor: 'Intel Core i5-10210U', Memory: '8GB DDR4', Storage: '256GB SSD', Display: '14" FHD', Condition: 'Pre-owned, tested in-store' },
+    stock: 4,
+    condition: 'pre-owned',
+    badge: 'Pre-owned',
+    warranty: '3 months store warranty',
   },
   {
-    id: 'ram-upgrade-16gb-ddr5',
-    name: 'RAM Upgrade: +16GB DDR5 SO-DIMM (installed)',
-    brand: 'Kingston',
-    category: 'software-upgrades',
-    art: 'ram',
-    color: '#2563eb',
-    price: 2995,
-    highlights: ['16GB DDR5-5600 SO-DIMM', 'Free in-store installation', 'Compatibility checked'],
-    specs: { Module: 'Kingston 16GB DDR5-5600 SO-DIMM', Service: 'Installation and memory test at any branch' },
-    stock: 50,
-    warranty: 'Lifetime limited (module) / 30 days (service)',
+    id: 'hp-elitebook-830-g6-po',
+    name: 'HP EliteBook 830 G6 (Pre-owned)',
+    brand: 'HP',
+    category: 'premium-laptops',
+    art: 'laptop',
+    color: '#334155',
+    price: 15999,
+    originalPrice: 17999,
+    highlights: ['Core i5 8th Gen', '16GB RAM / 512GB SSD', '13.3" FHD touch', 'Aluminum body'],
+    specs: { Processor: 'Intel Core i5-8365U', Memory: '16GB DDR4', Storage: '512GB NVMe SSD', Display: '13.3" FHD touch', Condition: 'Pre-owned, tested in-store' },
+    stock: 2,
+    condition: 'pre-owned',
+    badge: 'Pre-owned',
+    warranty: '3 months store warranty',
   },
   {
-    id: 'ssd-upgrade-1tb',
-    name: 'SSD Upgrade: 1TB NVMe Gen4 (installed)',
-    brand: 'Kingston',
-    category: 'software-upgrades',
-    art: 'ram',
-    color: '#7c3aed',
-    price: 3995,
-    originalPrice: 4495,
-    highlights: ['1TB PCIe Gen4 NVMe', 'Free cloning of your old drive', 'Same-day installation'],
-    specs: { Drive: 'Kingston NV3 1TB PCIe Gen4 NVMe', Service: 'Installation and data cloning at any branch' },
-    stock: 50,
-    warranty: '3 years (drive) / 30 days (service)',
+    id: 'toshiba-dynabook-x40j-po',
+    name: 'Toshiba Dynabook X40-J (Pre-owned)',
+    brand: 'Dynabook',
+    category: 'everyday-laptops',
+    art: 'laptop',
+    color: '#525252',
+    price: 11999,
+    highlights: ['Core i5 11th Gen', '8GB RAM / 256GB SSD', '14" FHD', 'Light 1.4 kg body'],
+    specs: { Processor: 'Intel Core i5-1135G7', Memory: '8GB DDR4', Storage: '256GB SSD', Display: '14" FHD', Condition: 'Pre-owned, tested in-store' },
+    stock: 5,
+    condition: 'pre-owned',
+    badge: 'Pre-owned',
+    warranty: '3 months store warranty',
+  },
+  {
+    id: 'toshiba-portege-x20w-po',
+    name: 'Toshiba Portege X20W-E 2-in-1 (Pre-owned)',
+    brand: 'Dynabook',
+    category: 'premium-laptops',
+    art: 'laptop',
+    color: '#1e293b',
+    price: 16999,
+    highlights: ['Core i5 8th Gen', '16GB RAM / 256GB SSD', '12.5" FHD touchscreen', '360 flip design'],
+    specs: { Processor: 'Intel Core i5-8250U', Memory: '16GB', Storage: '256GB SSD', Display: '12.5" FHD touch, 360 flip', Condition: 'Pre-owned, tested in-store' },
+    stock: 2,
+    condition: 'pre-owned',
+    badge: 'Pre-owned',
+    warranty: '3 months store warranty',
+  },
+  {
+    id: 'lenovo-n22-po',
+    name: 'Lenovo N22 (Pre-owned)',
+    brand: 'Lenovo',
+    category: 'everyday-laptops',
+    art: 'laptop',
+    color: '#57534e',
+    price: 4499,
+    highlights: ['Celeron N3060', '4GB RAM / 128GB', '11.6" for school and browsing', 'Tested before release'],
+    specs: { Processor: 'Intel Celeron N3060', Memory: '4GB', Storage: '128GB', Display: '11.6" HD', Condition: 'Pre-owned, tested in-store' },
+    stock: 8,
+    condition: 'pre-owned',
+    badge: 'Pre-owned',
+    warranty: '1 month store warranty',
   },
 ];
 
@@ -650,15 +621,13 @@ const AVAILABILITY: Record<string, { a: Product['availability']; m: Product['mar
   'logitech-g102': { a: 'all', m: { shopee: true, tiktok: true, lazada: true } },
   'logitech-h390': { a: 'all', m: { shopee: true, tiktok: true } },
   'fantech-maxfit61': { a: 'all', m: { shopee: true, tiktok: true } },
-  'fantech-wgp15': { a: 'metro', m: { shopee: true, tiktok: true } },
-  'lenovo-tab-m11': { a: 'metro', m: { shopee: true, lazada: true } },
-  'samsung-galaxy-tab-a9-plus': { a: 'all', m: { shopee: true, tiktok: true, lazada: true } },
-  'tecno-pova-6': { a: 'all', m: { shopee: true, tiktok: true } },
-  'realme-c67': { a: 'metro', m: { shopee: true, tiktok: true } },
-  'ms-365-family': { a: 'all', m: { shopee: true, lazada: true } },
-  'eset-home-security-essential': { a: 'all', m: { shopee: true, lazada: true } },
-  'ram-upgrade-16gb-ddr5': { a: 'all', m: { shopee: true } },
-  'ssd-upgrade-1tb': { a: 'all', m: { shopee: true } },
+  'fantech-wgp15': { a: 'metro', m: { shopee: true, tiktok: true } },  'samsung-galaxy-tab-a9-plus': { a: 'all', m: { shopee: true, tiktok: true, lazada: true } },  'realme-c67': { a: 'metro', m: { shopee: true, tiktok: true } },  'eset-home-security-essential': { a: 'all', m: { shopee: true, lazada: true } },  'ssd-upgrade-1tb': { a: 'all', m: { shopee: true } },
+  'lenovo-thinkpad-x390-po': { a: 'metro', m: { shopee: true } },
+  'dell-latitude-3410-po': { a: 'metro', m: { shopee: true } },
+  'hp-elitebook-830-g6-po': { a: 'metro', m: { shopee: true } },
+  'toshiba-dynabook-x40j-po': { a: 'metro', m: { shopee: true } },
+  'toshiba-portege-x20w-po': { a: 'metro', m: { shopee: true } },
+  'lenovo-n22-po': { a: 'all', m: { shopee: true, tiktok: true } },
 };
 
 for (const p of PRODUCTS) {

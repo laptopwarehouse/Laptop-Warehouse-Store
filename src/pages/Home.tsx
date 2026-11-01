@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CreditCard, ExternalLink, Laptop, MapPin, Percent, ShieldCheck, Smartphone, Truck } from 'lucide-react';
+import { ExternalLink, Laptop, MapPin, Percent, ShieldCheck, Smartphone } from 'lucide-react';
 import { CATEGORIES, PRODUCTS } from '../data/catalog';
 import { ARTICLES, STORE } from '../data/content';
 import { BRANCH_LOCATIONS } from '../data/branches';
@@ -11,16 +11,14 @@ const HOME_SECTIONS: { title: string; category: string }[] = [
   { title: 'Everyday Laptops', category: 'everyday-laptops' },
   { title: 'Premium Laptops', category: 'premium-laptops' },
   { title: 'Desktops & All-in-One', category: 'desktops' },
-  { title: 'Monitors & Printers', category: 'monitors-printers' },
-  { title: 'Phones & Tablets', category: 'phones-tablets' },
+  { title: 'Printers & Monitors', category: 'monitors-printers' },
   { title: 'Accessories', category: 'accessories' },
-  { title: 'Software & Upgrades', category: 'software-upgrades' },
 ];
 
 const SELLING_POINTS = [
-  { icon: Truck, title: 'Nationwide Delivery', sub: 'Fast & safe shipments' },
-  { icon: ShieldCheck, title: 'Genuine & Sealed', sub: 'Full store warranty' },
-  { icon: CreditCard, title: '0% Installment', sub: 'BillEase & Home Credit' },
+  { icon: Percent, title: 'Bodega-sale deals', sub: 'Free printer bundles' },
+  { icon: ShieldCheck, title: 'Tested units', sub: 'Checked before release' },
+  { icon: MapPin, title: 'Reserve & pick up', sub: 'Pay at the branch' },
 ];
 
 export default function Home() {
@@ -84,11 +82,11 @@ export default function Home() {
             </div>
           </div>
         </Link>
-        <Link to="/installments" className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <Link to="/category/monitors-printers" className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <Percent className="h-6 w-6 text-brand" />
-          <p className="mt-2 font-display font-bold text-neutral-900">No credit card? No problem.</p>
-          <p className="mt-1 text-sm text-neutral-500">Up to 0% downpayment. Low interest rates via BillEase & Home Credit.</p>
-          <span className="mt-3 inline-block rounded-md bg-ink px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">More info</span>
+          <p className="mt-2 font-display font-bold text-neutral-900">Free printer bundles</p>
+          <p className="mt-1 text-sm text-neutral-500">Select laptops and desktops come with a free printer — while stocks last.</p>
+          <span className="mt-3 inline-block rounded-md bg-ink px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">See bundles</span>
         </Link>
         <Link to="/branches" className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <Smartphone className="h-6 w-6 text-brand" />
@@ -96,11 +94,11 @@ export default function Home() {
           <p className="mt-1 text-sm text-neutral-500">Find the branch nearest you — walk in, test the unit, bring it home.</p>
           <span className="mt-3 inline-block rounded-md bg-ink px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">Locate a store</span>
         </Link>
-        <Link to="/category/software-upgrades" className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <Link to="/category/everyday-laptops" className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <ShieldCheck className="h-6 w-6 text-brand" />
-          <p className="mt-2 font-display font-bold text-neutral-900">Genuine software & upgrades</p>
-          <p className="mt-1 text-sm text-neutral-500">Microsoft 365, antivirus, and same-day RAM/SSD upgrades at any branch.</p>
-          <span className="mt-3 inline-block rounded-md bg-ink px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">Shop upgrades</span>
+          <p className="mt-2 font-display font-bold text-neutral-900">Pre-owned units from ₱4,499</p>
+          <p className="mt-1 text-sm text-neutral-500">Tested second-hand laptops with store warranty — our best deals.</p>
+          <span className="mt-3 inline-block rounded-md bg-ink px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">Shop pre-owned</span>
         </Link>
         <Link to="/category/gaming-laptops" className="rounded-xl bg-gradient-to-br from-brand to-brand-dark p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <Laptop className="h-6 w-6 text-white" />

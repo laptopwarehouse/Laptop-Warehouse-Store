@@ -8,7 +8,7 @@ export default function BranchesPage() {
     <div className="mx-auto max-w-7xl px-4 py-6">
       <h1 className="font-display text-2xl font-bold">Branch Locator</h1>
       <p className="mt-1 text-sm text-neutral-500">
-        {BRANCH_LOCATIONS.length} branches and counting. Walk in to test units, apply for installment, or claim online orders.
+        {BRANCH_LOCATIONS.length} branches and counting. Walk in to test units, claim reservations, or ask about today’s bodega deals.
       </p>
       {REGIONS.map((region) => (
         <section key={region} className="mt-6">

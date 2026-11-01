@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, CreditCard, MapPin } from 'lucide-react';
 import { formatPeso } from '../data/catalog';
-import { INSTALLMENT_PLANS, PAYMENT_METHODS } from '../data/content';
+import { PAYMENT_METHODS } from '../data/content';
 import { BRANCH_LOCATIONS } from '../data/branches';
 import { useCart } from '../lib/cart';
 import { useStore } from '../lib/store';
@@ -19,14 +19,10 @@ export default function CheckoutPage() {
     email: '',
     branch: branch.id,
     payment: 'Cash',
-    months: 6,
   });
 
   const pickupBranch = BRANCH_LOCATIONS.find((b) => b.id === form.branch) ?? branch;
-  const plan = INSTALLMENT_PLANS.find((p) => p.months === form.months) ?? INSTALLMENT_PLANS[1];
-  const isInstallment = form.payment === 'BillEase' || form.payment === 'Home Credit';
-  const total = isInstallment ? Math.ceil((subtotal * (1 + plan.rate)) / 5) * 5 : subtotal;
-  const monthly = Math.ceil(total / plan.months / 5) * 5;
+  const total = subtotal;
 
   const valid = useMemo(() => {
     if (!form.name.trim() || !/^0?9\d{9}$/.test(form.phone.replace(/\s|-/g, ''))) return false;
@@ -48,12 +44,6 @@ export default function CheckoutPage() {
           Reference <span className="font-mono font-bold text-brand-dark">{orderRef}</span>. Show it at {pickupBranch.name} to pay and claim
           your unit — our team will text you when it&apos;s ready for pickup.
         </p>
-        {isInstallment && (
-          <p className="mt-3 rounded-lg bg-brand/10 p-3 text-sm text-neutral-700">
-            {form.payment} is processed at the store: bring 1 valid ID and your active mobile number. Estimated {formatPeso(monthly)}/mo for{' '}
-            {plan.months} months.
-          </p>
-        )}
         <p className="mt-3 text-xs text-neutral-500">Want it delivered instead? Order through our Shopee, TikTok Shop, or Lazada stores.</p>
         <Link to="/shop" className="mt-6 inline-block rounded-md bg-brand px-5 py-2.5 text-sm font-bold text-white hover:bg-brand-dark">
           Continue browsing
@@ -146,25 +136,6 @@ export default function CheckoutPage() {
                 </button>
               ))}
             </div>
-            {isInstallment && (
-              <div className="mt-3">
-                <label className="mb-1 block text-xs font-semibold text-neutral-500">Installment term</label>
-                <div className="flex flex-wrap gap-2">
-                  {INSTALLMENT_PLANS.map((p) => (
-                    <button
-                      key={p.months}
-                      type="button"
-                      onClick={() => setForm((v) => ({ ...v, months: p.months }))}
-                      className={`rounded-md border px-2.5 py-1.5 text-xs font-semibold ${
-                        form.months === p.months ? 'border-brand bg-brand/10 text-brand-dark' : 'border-neutral-300 text-neutral-600'
-                      }`}
-                    >
-                      {p.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
           </section>
 
           <button
@@ -195,12 +166,6 @@ export default function CheckoutPage() {
             <dt className="text-neutral-500">Subtotal</dt>
             <dd className="font-semibold">{formatPeso(subtotal)}</dd>
           </div>
-          {isInstallment && (
-            <div className="flex justify-between">
-              <dt className="text-neutral-500">Installment charge ({plan.label})</dt>
-              <dd className="font-semibold">{formatPeso(total - subtotal)}</dd>
-            </div>
-          )}
           <div className="flex justify-between border-t border-neutral-200 pt-2 text-base font-extrabold">
             <dt>Total due at pickup</dt>
             <dd>{formatPeso(total)}</dd>

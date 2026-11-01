@@ -51,22 +51,6 @@ function Device({ kind, color }: { kind: Product['art']; color: string }) {
           <circle cx="146" cy="70" r="4" fill="#22c55e" />
         </g>
       );
-    case 'phone':
-      return (
-        <g>
-          <rect x="74" y="12" width="52" height="116" rx="10" fill="#18181b" />
-          <rect x="78" y="18" width="44" height="104" rx="7" fill={color} opacity="0.85" />
-          <rect x="92" y="21" width="16" height="4" rx="2" fill="#18181b" />
-        </g>
-      );
-    case 'tablet':
-      return (
-        <g>
-          <rect x="42" y="22" width="116" height="96" rx="9" fill="#18181b" />
-          <rect x="48" y="28" width="104" height="84" rx="5" fill={color} opacity="0.85" />
-          <rect x="156" y="40" width="4" height="60" rx="2" fill="#a1a1aa" transform="rotate(12 158 70)" />
-        </g>
-      );
     case 'headset':
       return (
         <g fill="none" strokeLinecap="round">
@@ -105,29 +89,6 @@ function Device({ kind, color }: { kind: Product['art']; color: string }) {
           <circle cx="134" cy="66" r="4" fill="#18181b" />
           <circle cx="134" cy="82" r="4" fill="#18181b" />
           <circle cx="144" cy="74" r="4" fill="#18181b" />
-        </g>
-      );
-    case 'software':
-      return (
-        <g>
-          <path d="M60 24h70l14 10v92H60z" fill={color} />
-          <path d="M130 24l14 10h-14z" fill="#00000040" />
-          <rect x="70" y="44" width="62" height="40" rx="3" fill="#ffffff" opacity="0.9" />
-          <rect x="70" y="92" width="48" height="5" rx="2.5" fill="#ffffff" opacity="0.7" />
-          <rect x="70" y="102" width="34" height="5" rx="2.5" fill="#ffffff" opacity="0.5" />
-        </g>
-      );
-    case 'ram':
-      return (
-        <g>
-          <rect x="26" y="52" width="148" height="38" rx="3" fill="#166534" />
-          {Array.from({ length: 4 }).map((_, i) => (
-            <rect key={i} x={38 + i * 34} y="58" width="26" height="20" rx="2" fill="#18181b" />
-          ))}
-          <rect x="26" y="52" width="148" height="10" fill={color} opacity="0.9" />
-          {Array.from({ length: 30 }).map((_, i) => (
-            <rect key={i} x={30 + i * 4.8} y="86" width="2.6" height="6" fill="#eab308" />
-          ))}
         </g>
       );
   }

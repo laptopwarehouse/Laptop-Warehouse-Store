@@ -154,9 +154,6 @@ function MegaNav() {
           <Newspaper className="h-3.5 w-3.5" /> Blog
         </span>
       </NavLink>
-      <NavLink to="/installments" className={linkCls}>
-        Installments
-      </NavLink>
     </nav>
   );
 }
@@ -168,7 +165,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 shadow-md">
       <div className="bg-brand text-white">
         <p className="mx-auto max-w-7xl truncate px-4 py-1.5 text-center text-[11px] font-bold uppercase tracking-widest">
-          Brand-new laptops at warehouse prices — 19 branches nationwide
+          Laptops, desktops & printers at warehouse prices
         </p>
       </div>
       <div className="bg-ink">
@@ -257,9 +254,6 @@ export default function Header() {
               </Link>
               <Link to="/blog" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2.5 font-semibold hover:bg-neutral-100">
                 Blog
-              </Link>
-              <Link to="/installments" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2.5 font-semibold hover:bg-neutral-100">
-                Installment Options
               </Link>
               <Link to="/privacy" onClick={() => setMobileOpen(false)} className="rounded-md px-3 py-2 text-sm text-neutral-500 hover:bg-neutral-100">
                 Privacy Policy

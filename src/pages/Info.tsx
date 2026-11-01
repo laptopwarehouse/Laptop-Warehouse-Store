@@ -1,66 +1,6 @@
-import { Link } from 'react-router-dom';
-import { CreditCard, FileText, Phone } from 'lucide-react';
-import { INSTALLMENT_PLANS, STORE } from '../data/content';
-import { BRANCH_LOCATIONS } from '../data/branches';
+import { CreditCard, FileText } from 'lucide-react';
+import { STORE } from '../data/content';
 
-export function InstallmentsPage() {
-  return (
-    <div className="mx-auto max-w-3xl px-4 py-6">
-      <h1 className="font-display text-2xl font-bold">No credit card? No problem.</h1>
-      <p className="mt-2 text-sm text-neutral-600">
-        Take home your laptop today and pay it off in installments through <b>BillEase</b> or <b>Home Credit</b> — no credit card required. Up to 0%
-        downpayment for qualified customers.
-      </p>
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        {['BillEase', 'Home Credit'].map((provider) => (
-          <div key={provider} className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
-            <h2 className="font-display text-lg font-bold">{provider}</h2>
-            <ul className="mt-3 space-y-2 text-sm text-neutral-600">
-              <li>1 valid government ID</li>
-              <li>Active mobile number</li>
-              <li>In-store approval in 15–30 minutes</li>
-              <li>0% downpayment for qualified customers</li>
-            </ul>
-          </div>
-        ))}
-      </div>
-      <div className="mt-6 overflow-hidden rounded-xl bg-white shadow-sm">
-        <div className="bg-ink px-4 py-3">
-          <h2 className="font-display font-bold text-white">
-            <span className="mr-2 inline-block h-4 w-1.5 rounded-sm bg-brand align-middle" />
-            Typical terms
-          </h2>
-        </div>
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-neutral-200 text-left text-xs uppercase tracking-widest text-neutral-400">
-              <th className="px-4 py-2.5">Term</th>
-              <th className="px-4 py-2.5">Sample on ₱30,000</th>
-            </tr>
-          </thead>
-          <tbody>
-            {INSTALLMENT_PLANS.map((p) => (
-              <tr key={p.months} className="border-b border-neutral-100 last:border-0">
-                <td className="px-4 py-2.5 font-semibold">{p.label}</td>
-                <td className="px-4 py-2.5">
-                  ≈ ₱{Math.ceil((30000 * (1 + p.rate)) / p.months / 5) * 5}/mo
-                  {p.rate === 0 && <span className="ml-2 rounded bg-green-100 px-1.5 py-0.5 text-[10px] font-bold text-green-700">0% interest</span>}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-4 text-xs text-neutral-500">
-        Indicative figures only. Final terms, rates and approval are decided by the installment provider at the branch. Bring your valid ID to any of our{' '}
-        {BRANCH_LOCATIONS.length} branches or call {STORE.phone}.
-      </p>
-      <Link to="/branches" className="mt-5 inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-dark">
-        <Phone className="h-4 w-4" /> Find a branch
-      </Link>
-    </div>
-  );
-}
 
 export function PrivacyPage() {
   return (
@@ -68,8 +8,7 @@ export function PrivacyPage() {
       <h1 className="font-display text-2xl font-bold">Privacy Policy</h1>
       <div className="mt-4 space-y-4 text-sm leading-relaxed text-neutral-700">
         <p>
-          {STORE.name} collects only the personal information needed to process your order or service request: your name, mobile number, delivery
-          address, and — when paying by installment — the documents required by the installment provider.
+          {STORE.name} collects only the personal information needed to process your order or service request: your name, mobile number, and preferred pickup branch.
         </p>
         <p>
           We use this information to confirm and fulfil orders, process warranty claims, and contact you about your purchase. We do not sell or share

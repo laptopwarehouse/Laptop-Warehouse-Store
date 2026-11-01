@@ -34,7 +34,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-neutral-400">
-            {STORE.tagline} Brand-new units, genuine software, and nationwide delivery — with {BRANCH_LOCATIONS.length} branches across the Philippines, {mm} of them in Metro Manila.
+            {STORE.tagline} Brand-new and pre-owned laptops, desktops and printers — {BRANCH_LOCATIONS.length} branches across the Philippines, {mm} of them in Metro Manila.
           </p>
           <p className="mt-4 flex items-center gap-2 text-sm">
             <Phone className="h-4 w-4 text-brand" /> {STORE.phone}
@@ -86,11 +86,6 @@ export default function Footer() {
             <li>
               <Link to="/branches" className="flex items-center gap-2 hover:text-brand">
                 <MapPin className="h-3.5 w-3.5" /> Branch locator
-              </Link>
-            </li>
-            <li>
-              <Link to="/installments" className="flex items-center gap-2 hover:text-brand">
-                Installment options
               </Link>
             </li>
             <li>

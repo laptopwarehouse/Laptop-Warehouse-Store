@@ -12,7 +12,7 @@ import CartPage from './pages/Cart';
 import CheckoutPage from './pages/Checkout';
 import BranchesPage from './pages/Branches';
 import { BlogArticle, BlogList } from './pages/Blog';
-import { InstallmentsPage, PrivacyPage, TermsPage } from './pages/Info';
+import { PrivacyPage, TermsPage } from './pages/Info';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -41,7 +41,6 @@ export default function App() {
             <Route path="/branches" element={<BranchesPage />} />
             <Route path="/blog" element={<BlogList />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
-            <Route path="/installments" element={<InstallmentsPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route
