@@ -101,7 +101,7 @@ export const BRANCH_LOCATIONS: BranchLocation[] = [
     shortName: 'Bataan Balanga',
     region: 'Luzon Provincial',
     address: 'No. 6 Tuazon Bldg., Capitol Dr., Balanga, Bataan',
-    landmark: 'Capitol Drive',
+    landmark: 'Beside LBC, in front of Beanery',
     phone: '0927 700 3432',
     hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },

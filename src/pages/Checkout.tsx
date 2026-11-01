@@ -44,7 +44,7 @@ export default function CheckoutPage() {
           Reference <span className="font-mono font-bold text-brand-dark">{orderRef}</span>. Show it at {pickupBranch.name} to pay and claim
           your unit — our team will text you when it&apos;s ready for pickup.
         </p>
-        <p className="mt-3 text-xs text-neutral-500">Want it delivered instead? Order through our Shopee, TikTok Shop, or Lazada stores.</p>
+        <p className="mt-3 text-xs text-neutral-500">Want it delivered instead? Order through our Shopee, TikTok Shop, or Lazada stores — or ask about nationwide COD.</p>
         <Link to="/shop" className="mt-6 inline-block rounded-md bg-brand px-5 py-2.5 text-sm font-bold text-white hover:bg-brand-dark">
           Continue browsing
         </Link>
@@ -75,7 +75,7 @@ export default function CheckoutPage() {
         </button>
         <h1 className="font-display text-2xl font-bold">Reserve for pickup</h1>
         <p className="mt-1 text-sm text-neutral-500">
-          No online payment — we hold the unit at your branch and you pay when you claim it. For delivery, order via our online stores.
+          No online payment — we hold the unit at your branch and you pay when you claim it. For delivery, order via our online stores or ask about nationwide COD.
         </p>
         <form
           className="mt-4 space-y-5"

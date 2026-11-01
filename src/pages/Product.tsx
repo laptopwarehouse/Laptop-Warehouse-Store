@@ -117,7 +117,7 @@ export default function ProductPage() {
               <p className="flex items-center gap-1.5 font-bold">
                 <Truck className="h-4 w-4 text-brand-dark" /> Delivery
               </p>
-              <p className="mt-1 text-xs text-neutral-500">Want it delivered? Order through our Shopee, TikTok Shop, or Lazada stores below.</p>
+              <p className="mt-1 text-xs text-neutral-500">Want it delivered? Order via our Shopee, TikTok Shop, or Lazada stores — or message us for nationwide COD.</p>
             </div>
             <div className="rounded-lg bg-neutral-50 p-3">
               <p className="font-bold">In-store payments</p>
