@@ -1,8 +1,8 @@
 
 export interface BranchLocation {
   id: string;
-  name: string; // e.g. "Quezon City (Aurora Blvd)"
-  shortName: string; // e.g. "QC Aurora Blvd"
+  name: string;
+  shortName: string;
   region: 'Metro Manila' | 'Luzon Provincial' | 'Visayas & Mindanao';
   address: string;
   landmark: string;
@@ -10,200 +10,141 @@ export interface BranchLocation {
   hours: string;
 }
 
+// Verified from official Laptop Warehouse branch posts (Am's Trending Computer Center OPC)
 export const BRANCH_LOCATIONS: BranchLocation[] = [
   // --- METRO MANILA ---
   {
-    id: 'mnl-qc-aurora',
-    name: 'Quezon City (Aurora Blvd)',
-    shortName: 'QC Aurora Blvd',
+    id: 'mnl-manila-sampaloc',
+    name: 'Manila (Sampaloc)',
+    shortName: 'Manila Sampaloc',
     region: 'Metro Manila',
-    address: 'RM 103 G/F, P&S Bldg., 717 Aurora Blvd., Quezon City',
-    landmark: 'Across Robinsons Magnolia',
+    address: '421 Figueras St., Sampaloc, Manila 1015',
+    landmark: 'In front of McDonald’s Bustillos',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
-  },
-  {
-    id: 'mnl-qc-fairview',
-    name: 'Quezon City (Fairview)',
-    shortName: 'QC Fairview',
-    region: 'Metro Manila',
-    address: '2nd Floor, Ever Gotesco Mall, Commonwealth Ave, Quezon City',
-    landmark: 'Inside Ever Gotesco Mall',
-    phone: '0927 700 3432',
-    hours: '10:00 AM - 9:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
   {
     id: 'mnl-qc-commonwealth',
     name: 'Quezon City (Commonwealth)',
     shortName: 'QC Commonwealth',
     region: 'Metro Manila',
-    address: 'Unit 44, St. Vincent St., Brgy. Holy Spirit, Quezon City',
-    landmark: 'In front of COA (Commission on Audit)',
+    address: '44 Saint Vincent St., Brgy. Holy Spirit, Quezon City',
+    landmark: 'Near Commonwealth Market',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 8:00 PM, Sun 9:00 AM - 6:00 PM',
+  },
+  {
+    id: 'mnl-qc-sandigan',
+    name: 'Quezon City (Sandigan)',
+    shortName: 'QC Sandigan',
+    region: 'Metro Manila',
+    address: 'M3PP+MHX, Commonwealth Ave., Quezon City',
+    landmark: 'Along Commonwealth Avenue',
+    phone: '0927 700 3432',
+    hours: 'Mon–Sat 10:00 AM - 8:00 PM, Sun 10:00 AM - 7:00 PM',
   },
   {
     id: 'mnl-qc-cubao',
     name: 'Quezon City (Cubao)',
     shortName: 'QC Cubao',
     region: 'Metro Manila',
-    address: '16-C Don Alfredo Egea, Brgy. Pinagkaisahan, Cubao, Quezon City',
-    landmark: 'Barangay Pinagkaisahan area',
+    address: '16D Don Alfredo Egea, Cubao, Quezon City 1109',
+    landmark: 'Near Cubao Expo',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
   {
-    id: 'mnl-manila-sampaloc',
-    name: 'Manila (Sampaloc)',
-    shortName: 'Manila Sampaloc',
+    id: 'mnl-caloocan-monumento',
+    name: 'Caloocan (Monumento)',
+    shortName: 'Caloocan Monumento',
     region: 'Metro Manila',
-    address: '421 Figueras St., Sampaloc, Manila',
-    landmark: "In front of McDonald's Bustillos",
+    address: 'Cor. Samson Rd. & Dagohoy St., Caloocan City',
+    landmark: 'Puregold Monumento',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
-  },
-  {
-    id: 'mnl-caloocan',
-    name: 'Caloocan',
-    shortName: 'Caloocan Sangandaan',
-    region: 'Metro Manila',
-    address: '578 A. Mabini St., Sangandaan, Caloocan',
-    landmark: 'Near SM Center Sangandaan',
-    phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
-  },
-  {
-    id: 'mnl-las-pinas',
-    name: 'Las Piñas',
-    shortName: 'Las Piñas Alabang-Zapote',
-    region: 'Metro Manila',
-    address: 'Doña Nena Business Center Bldg., 481 Real St., Alabang-Zapote Road',
-    landmark: 'In front of SM Southmall',
-    phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
-  },
-  {
-    id: 'mnl-pasig',
-    name: 'Pasig',
-    shortName: 'Pasig Ortigas Center',
-    region: 'Metro Manila',
-    address: 'Ruby Rd., Ortigas Center, Pasig City',
-    landmark: 'Behind Robinsons Galleria',
-    phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
 
   // --- LUZON PROVINCIAL ---
   {
-    id: 'luz-cavite-imus',
-    name: 'Cavite (Imus)',
-    shortName: 'Cavite Imus',
-    region: 'Luzon Provincial',
-    address: '1-D, Anabu, Emilio Aguinaldo Hi-way, Imus',
-    landmark: 'Beside Sr. Pedro Chicken',
-    phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
-  },
-  {
-    id: 'luz-rizal-montalban',
+    id: 'lzn-rizal-montalban',
     name: 'Rizal (Montalban)',
     shortName: 'Rizal Montalban',
     region: 'Luzon Provincial',
-    address: '52 San Jose, Montalban, Rizal',
-    landmark: 'San Jose major route',
+    address: '52 E. Rodriguez Hwy., Rodriguez, Rizal 1860',
+    landmark: 'Along E. Rodriguez Highway',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
   {
-    id: 'luz-bulacan-sjdm',
-    name: 'Bulacan (Sanjose Del Monte)',
-    shortName: 'Bulacan SJDM',
+    id: 'lzn-cavite-imus',
+    name: 'Cavite (Imus)',
+    shortName: 'Cavite Imus',
     region: 'Luzon Provincial',
-    address: '3023 RHC Builders Warehouse, Quirino Highway, San Jose Del Monte, Bulacan',
-    landmark: 'Inside RHC Builders Warehouse',
+    address: '1-D, Anabu, Emilio Aguinaldo Hi-way, Imus, Cavite',
+    landmark: 'Anabu, Aguinaldo Highway',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
   {
-    id: 'luz-laguna-calamba',
+    id: 'lzn-laguna-calamba',
     name: 'Laguna (Calamba)',
     shortName: 'Laguna Calamba',
     region: 'Luzon Provincial',
-    address: 'G/F, P&S Building, National Highway, Calamba, Laguna',
-    landmark: 'Along National Highway',
+    address: '762 Pan-Philippine Hwy., Calamba, Laguna 4027',
+    landmark: 'Along Pan-Philippine Highway',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
   {
-    id: 'luz-pampanga-angeles',
-    name: 'Pampanga (Angeles)',
-    shortName: 'Pampanga Angeles',
-    region: 'Luzon Provincial',
-    address: 'R.G. Gomez Bldg., 299 MacArthur Hwy, Angeles City, Pampanga',
-    landmark: 'MacArthur Highway route',
-    phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
-  },
-  {
-    id: 'luz-bataan-balanga',
+    id: 'lzn-bataan-balanga',
     name: 'Bataan (Balanga)',
     shortName: 'Bataan Balanga',
     region: 'Luzon Provincial',
     address: 'No. 6 Tuazon Bldg., Capitol Dr., Balanga, Bataan',
-    landmark: 'Along Capitol Drive',
+    landmark: 'Capitol Drive',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
   {
-    id: 'luz-baguio',
-    name: 'Baguio',
-    shortName: 'Baguio Assumption Rd',
+    id: 'lzn-olongapo',
+    name: 'Olongapo',
+    shortName: 'Olongapo MCC',
     region: 'Luzon Provincial',
-    address: '2nd Floor, ECCO Building, Assumption Rd., Baguio City',
-    landmark: 'Along Assumption Road',
+    address: 'MCC Building, Olongapo City, Zambales 2200',
+    landmark: 'Downtown Olongapo',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
   {
-    id: 'luz-naga',
-    name: 'Naga',
-    shortName: 'Naga Elias Angeles',
+    id: 'lzn-batangas-lipa',
+    name: 'Batangas (Lipa)',
+    shortName: 'Batangas Lipa',
     region: 'Luzon Provincial',
-    address: 'G/F, Crown Hotel Building, Elias Angeles St., Naga City',
-    landmark: 'Inside Crown Hotel Building',
+    address: 'Clara Bldg., Mataas na Lupa, J.P. Laurel Hwy., Lipa City, Batangas',
+    landmark: 'Mataas na Lupa, Lipa',
     phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
+  },
+  {
+    id: 'lzn-bulacan-sjdm',
+    name: 'Bulacan (SJDM)',
+    shortName: 'Bulacan SJDM',
+    region: 'Luzon Provincial',
+    address: '3023 RHC Builders Warehouse, Quirino Hwy., San Jose del Monte, Bulacan',
+    landmark: 'Along Quirino Highway',
+    phone: '0927 700 3432',
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
 
   // --- VISAYAS & MINDANAO ---
   {
-    id: 'vis-cebu',
-    name: 'Cebu',
-    shortName: 'Cebu City APM Mall',
+    id: 'vim-cebu-city',
+    name: 'Cebu City',
+    shortName: 'Cebu Sanciangko',
     region: 'Visayas & Mindanao',
-    address: 'G/F, APM Shopping Mall, A. Soriano Ave., Cebu City',
-    landmark: 'Across SM City Cebu',
+    address: 'J Marketing Bldg., 155 Sanciangko St., Cebu City 6000',
+    landmark: 'Sanciangko Street, downtown Cebu',
     phone: '0927 700 3432',
-    hours: '10:00 AM - 9:00 PM'
+    hours: 'Mon–Sat 9:00 AM - 6:00 PM',
   },
-  {
-    id: 'vis-iloilo',
-    name: 'Iloilo',
-    shortName: 'Iloilo Gen. Luna St',
-    region: 'Visayas & Mindanao',
-    address: 'G/F, its Bldg., Gen. Luna St., Iloilo City',
-    landmark: 'Near General Luna Street major hub',
-    phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
-  },
-  {
-    id: 'skm-davao',
-    name: 'Davao',
-    shortName: 'Davao Jaltan Bldg',
-    region: 'Visayas & Mindanao',
-    address: 'Door #5, G/F, Jaltan Bldg., C.M. Recto Ave., Davao City',
-    landmark: 'Recto Ave major zone',
-    phone: '0927 700 3432',
-    hours: '9:00 AM - 7:00 PM'
-  }
 ];
