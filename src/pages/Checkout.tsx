@@ -13,6 +13,8 @@ export default function CheckoutPage() {
   const navigate = useNavigate();
   const [step, setStep] = useState<1 | 2>(1);
   const [orderRef, setOrderRef] = useState('');
+  const [sending, setSending] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -29,9 +31,33 @@ export default function CheckoutPage() {
     return !!form.branch;
   }, [form]);
 
-  const submit = () => {
-    setOrderRef(`LW-${Date.now().toString(36).toUpperCase()}`);
+  const submit = async () => {
+    if (sending) return;
+    setSending(true);
+    const ref = `LW-${Date.now().toString(36).toUpperCase()}`;
+    setOrderRef(ref);
+    try {
+      const res = await fetch('/api/reserve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ref,
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim(),
+          branch: pickupBranch.name,
+          payment: form.payment,
+          items: lines.map((l) => ({ name: l.product.name, qty: l.qty, price: l.product.price })),
+          total,
+        }),
+      });
+      const data = (await res.json()) as { success?: boolean };
+      setEmailSent(!!data.success);
+    } catch {
+      setEmailSent(false);
+    }
     clear();
+    setSending(false);
     setStep(2);
   };
 
@@ -44,6 +70,12 @@ export default function CheckoutPage() {
           Reference <span className="font-mono font-bold text-brand-dark">{orderRef}</span>. Show it at {pickupBranch.name} to pay and claim
           your unit — our team will text you when it&apos;s ready for pickup.
         </p>
+        {emailSent && form.email && (
+          <p className="mt-2 text-xs font-semibold text-green-700">A confirmation email was sent to {form.email}.</p>
+        )}
+        {emailSent && !form.email && (
+          <p className="mt-2 text-xs text-neutral-500">The store has been emailed your reservation.</p>
+        )}
         <p className="mt-3 text-xs text-neutral-500">Want it delivered instead? Order through our Shopee, TikTok Shop, or Lazada stores — or ask about nationwide COD.</p>
         <Link to="/shop" className="mt-6 inline-block rounded-md bg-brand px-5 py-2.5 text-sm font-bold text-white hover:bg-brand-dark">
           Continue browsing
@@ -140,10 +172,10 @@ export default function CheckoutPage() {
 
           <button
             type="submit"
-            disabled={!valid}
+            disabled={!valid || sending}
             className="w-full rounded-md bg-brand py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-brand-dark disabled:opacity-40"
           >
-            Place reservation
+            {sending ? 'Reserving…' : 'Place reservation'}
           </button>
           {!valid && <p className="text-center text-xs text-neutral-500">Fill in your name, a valid mobile number, and a pickup branch.</p>}
         </form>
