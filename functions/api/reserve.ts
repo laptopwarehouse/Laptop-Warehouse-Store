@@ -128,6 +128,8 @@ export const onRequestPost = async (context: PagesFunctionContext): Promise<Resp
       {
         success: false,
         emailNotConfigured: true,
+        hasEmailUser: !!emailUser,
+        hasEmailPass: !!emailPass,
         message: "Reservation email is not configured yet (EMAIL_USER / EMAIL_PASS missing).",
       },
       200,
